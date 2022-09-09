@@ -10,7 +10,7 @@ public class CityController {
 
     @GetMapping("/home")
     public String greeting(Model model) {
-        model.addAttribute("title", "Ох стрьомно це все");
+        model.addAttribute("title", "Ох стрьомно це все"); //розумію
         return "home";
     }
 
