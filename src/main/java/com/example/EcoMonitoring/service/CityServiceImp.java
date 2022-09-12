@@ -1,25 +1,41 @@
 package com.example.EcoMonitoring.service;
 
 import com.example.EcoMonitoring.model.City;
-import com.example.EcoMonitoring.model.ElementCity;
-import com.example.EcoMonitoring.service.CityService;
 import com.example.EcoMonitoring.repository.CityRepository;
 import com.example.EcoMonitoring.repository.ElementCityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CityServiceImp implements CityService {
 
     @Autowired
-    CityRepository cityRepository;
+    private CityRepository cityRepository;
+    @Autowired
+    private final ElementCityService elementCityService;
+
+    public CityServiceImp(CityRepository cityRepository, ElementCityService elementCityService) {
+        this.cityRepository = cityRepository;
+        this.elementCityService = elementCityService;
+    }
 
 
     @Override
-    public City findOne(int intId) {
-        return cityRepository.getById(intId);
+    public Optional<City> findById(Long id) {
+        return cityRepository.findById(id);
     }
+
+    @Override
+    public void delete(City city) {
+        cityRepository.delete(city);
+    }
+
+    @Override
+    public City findByName(String name) {
+        return cityRepository.findByName(name);
+    }
+
 
 }

@@ -2,6 +2,10 @@ package com.example.EcoMonitoring.service;
 
 import com.example.EcoMonitoring.model.City;
 
+import java.util.Optional;
+
 public interface CityService {
-    City findOne(int intId);
+    Optional<City> findById(Long id);
+    void delete(City city);
+    City findByName(String name);
 }

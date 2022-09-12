@@ -6,5 +6,6 @@ import java.util.List;
 
 public interface ElementService {
     List<Element> findAll();
-    Element findOne(String name);
+    void saveElement(Element element);
+    Element findByNameElement(String nameElement);
 }

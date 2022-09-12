@@ -6,5 +6,5 @@ import java.util.List;
 
 public interface ElementCityService {
     List<ElementCity> findAll();
-    ElementCity findOne(String name);
+    ElementCity findByNameElement(String nameElement);
 }

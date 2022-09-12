@@ -1,17 +1,17 @@
 package com.example.EcoMonitoring.model;
 
 import javax.persistence.*;
-import java.util.HashMap;
 
 
-@Entity // This tells Hibernate to make a table out of this class
+
+@Entity
 @Table(name = "elements")
 public class Element {
 
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
 
     @Column (name = "code_element")
     private int code;
@@ -20,10 +20,10 @@ public class Element {
     private String nameElement;
 
     @Column (name = "average_daily")
-    private float averageDaily;
+    private double averageDaily;
 
     @Column (name = "max_once")
-    private float maxOnce;
+    private double maxOnce;
 
     @Column (name = "hazard_class")
     private int hazardClass;
@@ -33,7 +33,7 @@ public class Element {
     public Element() {
     }
 
-    public Element(String nameElement, float averageDaily, float maxOnce, int hazardClass, int code) {
+    public Element(String nameElement, double averageDaily, double maxOnce, int hazardClass, int code) {
         this.nameElement = nameElement;
         this.averageDaily = averageDaily;
         this.maxOnce = maxOnce;
@@ -41,11 +41,11 @@ public class Element {
         this.code = code;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -70,15 +70,15 @@ public class Element {
         this.averageDaily = averageDaily;
     }
 
-    public float getAverageDaily() {
+    public double getAverageDaily() {
         return averageDaily;
     }
 
-    public void setMaxOnce(float maxOnce) {
+    public void setMaxOnce(double maxOnce) {
         this.maxOnce = maxOnce;
     }
 
-    public float getMaxOnce() {
+    public double getMaxOnce() {
         return maxOnce;
     }
 
@@ -88,5 +88,17 @@ public class Element {
 
     public int getCode() {
         return code;
+    }
+
+    @Override
+    public String toString() {
+        return "Element{" +
+                "id=" + id +
+                ", code=" + code +
+                ", nameElement='" + nameElement + '\'' +
+                ", averageDaily=" + averageDaily +
+                ", maxOnce=" + maxOnce +
+                ", hazardClass=" + hazardClass +
+                '}';
     }
 }

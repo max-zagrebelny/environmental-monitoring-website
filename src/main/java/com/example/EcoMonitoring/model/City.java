@@ -8,18 +8,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-@Entity // This tells Hibernate to make a table out of this class
+@Entity
 @Table(name = "city")
 public class City {
 
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-
+    private Long id;
+    @Column(name = "name_city")
     private String name;
 
-    @OneToMany(mappedBy = "city", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "city")
     private List<ElementCity> elements;
 
     public City() {
@@ -39,11 +39,11 @@ public class City {
         elements.remove(element);
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
