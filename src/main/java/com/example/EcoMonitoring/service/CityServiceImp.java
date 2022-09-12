@@ -2,7 +2,6 @@ package com.example.EcoMonitoring.service;
 
 import com.example.EcoMonitoring.model.City;
 import com.example.EcoMonitoring.repository.CityRepository;
-import com.example.EcoMonitoring.repository.ElementCityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,11 +13,11 @@ public class CityServiceImp implements CityService {
     @Autowired
     private CityRepository cityRepository;
     @Autowired
-    private final ElementCityService elementCityService;
+    private final ElementFactoryService elementFactoryService;
 
-    public CityServiceImp(CityRepository cityRepository, ElementCityService elementCityService) {
+    public CityServiceImp(CityRepository cityRepository, ElementFactoryService elementFactoryService) {
         this.cityRepository = cityRepository;
-        this.elementCityService = elementCityService;
+        this.elementFactoryService = elementFactoryService;
     }
 
 

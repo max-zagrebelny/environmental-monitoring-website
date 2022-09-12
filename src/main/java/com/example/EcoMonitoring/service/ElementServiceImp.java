@@ -23,7 +23,7 @@ public class ElementServiceImp implements ElementService{
     @Override
     public Element findByNameElement(String nameElement)
     {
-        return elementRepository.findElByNameElement(nameElement);
+        return elementRepository.findByNameElement(nameElement);
     }
 
     @Override

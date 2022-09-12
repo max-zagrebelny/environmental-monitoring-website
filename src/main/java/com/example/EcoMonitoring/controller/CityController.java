@@ -1,11 +1,11 @@
 package com.example.EcoMonitoring.controller;
 
-import com.example.EcoMonitoring.model.City;
 import com.example.EcoMonitoring.model.Element;
-import com.example.EcoMonitoring.model.ElementCity;
+import com.example.EcoMonitoring.model.Factory;
 import com.example.EcoMonitoring.service.CityService;
-import com.example.EcoMonitoring.service.ElementCityService;
+import com.example.EcoMonitoring.service.ElementFactoryService;
 import com.example.EcoMonitoring.service.ElementService;
+import com.example.EcoMonitoring.service.FactoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,15 +20,19 @@ public class CityController {
     private CityService cityService;
 
     @Autowired
-    private ElementCityService elementCityService;
+    private ElementFactoryService elementFactoryService;
 
     @Autowired
     private ElementService elementService;
 
-    public CityController(CityService cityService, ElementCityService elementCityService, ElementService elementService) {
+    @Autowired
+    private FactoryService factoryService;
+
+    public CityController(CityService cityService, ElementFactoryService elementFactoryService, ElementService elementService, FactoryService factoryService) {
         this.cityService = cityService;
-        this.elementCityService = elementCityService;
+        this.elementFactoryService = elementFactoryService;
         this.elementService = elementService;
+        this.factoryService = factoryService;
     }
 
 
@@ -36,10 +40,8 @@ public class CityController {
     @GetMapping("/home")
     public String home(Model model) {
 
-        //City city = cityService.findByName("Черкаси");
-        //ElementCity elementCity = new ElementCity();
-        //elementCity.setCity(city);
-        //city.setElements(elementCityService.findAll());
+        Factory factory = factoryService.findAll().get(0);
+        System.out.println(factory.getName());
         Element element1 = elementService.findByNameElement("калій");
         System.out.println(element1.getNameElement());
         return "home";

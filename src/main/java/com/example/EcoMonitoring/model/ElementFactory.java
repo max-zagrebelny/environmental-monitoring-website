@@ -3,8 +3,8 @@ package com.example.EcoMonitoring.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "element_city")
-public class ElementCity {
+@Table(name = "element_factory")
+public class ElementFactory {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,12 +32,12 @@ public class ElementCity {
     private int hazardClass;
 
     @ManyToOne
-    @JoinColumn(name = "city_id")
-    private City city;
+    @JoinColumn(name = "factory_id")
+    private Factory factory;
 
-    public ElementCity() {}
+    public ElementFactory() {}
 
-    public ElementCity(float value, boolean isExcess, String nameElement, float averageDaily, float maxOnce, int hazardClass, int code) {
+    public ElementFactory(float value, boolean isExcess, String nameElement, float averageDaily, float maxOnce, int hazardClass, int code) {
         this.valueElement = value;
         this.isExcess = isExcess;
         this.nameElement = nameElement;
@@ -47,12 +47,12 @@ public class ElementCity {
         this.code = code;
     }
 
-    public City getCity() {
-        return city;
+    public Factory getFactory() {
+        return factory;
     }
 
-    public void setCity(City city) {
-        this.city = city;
+    public void setFactory(Factory factory) {
+        this.factory = factory;
     }
 
     public void setValue(float value) {
