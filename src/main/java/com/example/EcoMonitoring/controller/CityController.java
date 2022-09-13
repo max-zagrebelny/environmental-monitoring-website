@@ -1,6 +1,7 @@
 package com.example.EcoMonitoring.controller;
 
 import com.example.EcoMonitoring.model.Element;
+import com.example.EcoMonitoring.model.ElementFactory;
 import com.example.EcoMonitoring.model.Factory;
 import com.example.EcoMonitoring.service.CityService;
 import com.example.EcoMonitoring.service.ElementFactoryService;
@@ -10,6 +11,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 @Controller
@@ -40,10 +44,14 @@ public class CityController {
     @GetMapping("/home")
     public String home(Model model) {
 
+
         Element element1 = elementService.findByNameElement("Калій");
-        System.out.println(element1.getNameElement());
         Element element2 = elementService.findByNameElement("Силіцій");
-        System.out.println(element1.getNameElement());
+        List<Element> elements = new ArrayList<>();
+        elements.add(element1);
+        elements.add(element2);
+        model.addAttribute("elem", elements);
+        System.out.println(element2.getNameElement());
         return "home";
 
     }

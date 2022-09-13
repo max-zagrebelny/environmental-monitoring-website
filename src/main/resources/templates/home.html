@@ -5,7 +5,19 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
-<div >Hello world!!!</div>
-<div ></div>
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Code</th>
+        <th>AverageDaily</th>
+        <th>MaxOnce</th>
+    </tr>
+    <tr th:each="el : ${elem}">
+        <td th:text="${el.nameElement}"></td>
+        <td th:text="${el.code}"></td>
+        <td th:text="${el.averageDaily}"></td>
+        <td th:text="${el.maxOnce}"></td>
+    </tr>
+</table>
 </body>
 </html>
