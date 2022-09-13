@@ -42,6 +42,8 @@ public class CityController {
 
         Element element1 = elementService.findByNameElement("Калій");
         System.out.println(element1.getNameElement());
+        Element element2 = elementService.findByNameElement("Силіцій");
+        System.out.println(element1.getNameElement());
         return "home";
     }
 
