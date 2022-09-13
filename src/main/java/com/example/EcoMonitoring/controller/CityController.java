@@ -52,7 +52,6 @@ public class CityController {
         elements.add(element2);
         model.addAttribute("elem", elements);
         System.out.println(element2.getNameElement());
-        System.out.println(element2.getNameElement());
         return "home";
 
     }
