@@ -40,9 +40,7 @@ public class CityController {
     @GetMapping("/home")
     public String home(Model model) {
 
-        Factory factory = factoryService.findAll().get(0);
-        System.out.println(factory.getName());
-        Element element1 = elementService.findByNameElement("калій");
+        Element element1 = elementService.findByNameElement("Калій");
         System.out.println(element1.getNameElement());
         return "home";
     }
