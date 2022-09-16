@@ -45,7 +45,7 @@ public class CityController {
     public String home(Model model) {
 
         City city = new City();
-        String cityName = "Київ";
+        String cityName = "Черкаси";
 
 
         try {
