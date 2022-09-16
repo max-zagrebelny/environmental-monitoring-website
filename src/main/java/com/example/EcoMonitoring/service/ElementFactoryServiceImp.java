@@ -26,4 +26,10 @@ public class ElementFactoryServiceImp implements ElementFactoryService {
     public ElementFactory findByNameElement(String nameElement) {
         return elementFactoryRepository.findByNameElement(nameElement);
     }
+
+    @Override
+    public ElementFactory findByCode(int code) {
+        return elementFactoryRepository.findByCode(code);
+    }
+
 }

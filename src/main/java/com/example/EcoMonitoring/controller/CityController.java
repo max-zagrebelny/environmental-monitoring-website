@@ -1,5 +1,6 @@
 package com.example.EcoMonitoring.controller;
 
+import com.example.EcoMonitoring.model.City;
 import com.example.EcoMonitoring.model.Element;
 import com.example.EcoMonitoring.model.ElementFactory;
 import com.example.EcoMonitoring.model.Factory;
@@ -21,16 +22,16 @@ public class CityController {
 
 
     @Autowired
-    private CityService cityService;
+    private final CityService cityService;
 
     @Autowired
-    private ElementFactoryService elementFactoryService;
+    private final ElementFactoryService elementFactoryService;
 
     @Autowired
-    private ElementService elementService;
+    private final  ElementService elementService;
 
     @Autowired
-    private FactoryService factoryService;
+    private final FactoryService factoryService;
 
     public CityController(CityService cityService, ElementFactoryService elementFactoryService, ElementService elementService, FactoryService factoryService) {
         this.cityService = cityService;
@@ -40,20 +41,23 @@ public class CityController {
     }
 
 
-
     @GetMapping("/home")
     public String home(Model model) {
 
+        City city = new City();
+        String cityName = "Київ";
 
-        Element element1 = elementService.findByNameElement("Калій");
-        Element element2 = elementService.findByNameElement("Силіцій");
-        List<Element> elements = new ArrayList<>();
-        elements.add(element1);
-        elements.add(element2);
-        model.addAttribute("elem", elements);
-        System.out.println(element2.getNameElement());
+
+        try {
+            city = cityService.findByName(cityName);
+        } catch (NullPointerException e) {
+           model.addAttribute("city", cityName);
+           return "error";
+        }
+        cityService.delete(city);
+        cityService.save(city);
+        model.addAttribute("city", city);
+
         return "home";
-
     }
-
 }

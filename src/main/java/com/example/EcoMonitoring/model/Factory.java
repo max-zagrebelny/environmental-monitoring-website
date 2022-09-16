@@ -58,9 +58,10 @@ public class Factory {
     }
 
     public void addElement(ElementFactory element) {
-        element.setFactory(this);
-        elements.add(element);
-    }
+           element.setFactory(this);
+            elements.add(element);
+        }
+
 
     public void removeElement(ElementFactory element) {
         elements.remove(element);

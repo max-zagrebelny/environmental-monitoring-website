@@ -27,6 +27,11 @@ public class ElementServiceImp implements ElementService{
     }
 
     @Override
+    public Element findByCode(int code) {
+        return elementRepository.findByCode(code);
+    }
+
+    @Override
     public void saveElement(Element element) {
         elementRepository.save(element);
     }

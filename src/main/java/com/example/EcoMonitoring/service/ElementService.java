@@ -8,4 +8,5 @@ public interface ElementService {
     List<Element> findAll();
     void saveElement(Element element);
     Element findByNameElement(String nameElement);
+    Element findByCode(int code);
 }

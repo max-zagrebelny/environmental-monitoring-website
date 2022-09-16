@@ -1,0 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Abel&family=Glory&display=swap');
+
+
+body {
+    background: #3D4A4A;
+}
+
+.error-text {
+    display: relative;
+    margin-top: 6%;
+    text-align: center;
+    font-size: 40px;
+    color: whitesmoke; 
+    font-family: 'Abel', sans-serif;
+}
+
+.error-image {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 1%;
+    width: 450px;
+    height: 450px;
+ }

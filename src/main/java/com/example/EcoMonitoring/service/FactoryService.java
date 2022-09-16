@@ -9,4 +9,5 @@ import java.util.List;
 public interface FactoryService {
     List<Factory> findAll();
     void saveFactory( Factory factory);
+    List<Factory> findAllByCityId(Long city_id);
 }
