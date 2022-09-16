@@ -22,4 +22,9 @@ public class FactoryServiceImp implements FactoryService{
     public void saveFactory(Factory factory) {
         factoryRepository.save(factory);
     }
+
+    @Override
+    public List<Factory> findAllByCityId(Long city_id) {
+        return factoryRepository.findByCityId(city_id);
+    }
 }

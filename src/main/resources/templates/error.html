@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Упс, щось пішло не так.</title>
+    <link rel="stylesheet" type="text/css" 
+          href="../static/error.css" th:href="@{error.css}" />
+</head>
+<body>
+    <div class="error-text" th:text="'Місто ' +  ${city} + ' не знайдено в базі даних...'"></div>
+    <img class="error-image" src="../image/error/error.png">
+</body>    
+</html>
+

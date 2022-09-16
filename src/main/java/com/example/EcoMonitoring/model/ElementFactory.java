@@ -14,7 +14,7 @@ public class ElementFactory {
     private boolean isExcess;
 
     @Column(name = "value_element")
-    private float valueElement;
+    private double valueElement;
 
     @Column (name = "code_element")
     private int code;
@@ -23,13 +23,16 @@ public class ElementFactory {
     private String nameElement;
 
     @Column (name = "average_daily")
-    private float averageDaily;
+    private double averageDaily;
 
     @Column (name = "max_once")
-    private float maxOnce;
+    private double maxOnce;
 
     @Column (name = "hazard_class")
     private int hazardClass;
+
+    @Column(name = "message")
+    private String message;
 
     @ManyToOne
     @JoinColumn(name = "factory_id")
@@ -37,7 +40,8 @@ public class ElementFactory {
 
     public ElementFactory() {}
 
-    public ElementFactory(float value, boolean isExcess, String nameElement, float averageDaily, float maxOnce, int hazardClass, int code) {
+    public ElementFactory(float value, boolean isExcess,String nameElement,
+                          float averageDaily, float maxOnce, int hazardClass, int code, String message) {
         this.valueElement = value;
         this.isExcess = isExcess;
         this.nameElement = nameElement;
@@ -45,6 +49,7 @@ public class ElementFactory {
         this.maxOnce = maxOnce;
         this.hazardClass = hazardClass;
         this.code = code;
+        this.message = message;
     }
 
     public Factory getFactory() {
@@ -55,11 +60,11 @@ public class ElementFactory {
         this.factory = factory;
     }
 
-    public void setValue(float value) {
+    public void setValue(double value) {
         this.valueElement = value;
     }
 
-    public float getValue() {
+    public double getValue() {
         return valueElement;
     }
 
@@ -95,19 +100,19 @@ public class ElementFactory {
         this.hazardClass = hazardClass;
     }
 
-    public void setAverageDaily(float averageDaily) {
+    public void setAverageDaily(double averageDaily) {
         this.averageDaily = averageDaily;
     }
 
-    public float getAverageDaily() {
+    public double getAverageDaily() {
         return averageDaily;
     }
 
-    public void setMaxOnce(float maxOnce) {
+    public void setMaxOnce(double maxOnce) {
         this.maxOnce = maxOnce;
     }
 
-    public float getMaxOnce() {
+    public double getMaxOnce() {
         return maxOnce;
     }
 
@@ -117,5 +122,13 @@ public class ElementFactory {
 
     public int getCode() {
         return code;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
     }
 }

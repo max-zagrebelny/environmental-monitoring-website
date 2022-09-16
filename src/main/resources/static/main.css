@@ -1,0 +1,14 @@
+
+.table {
+    border: 2px solid grey;
+    align: center;
+}
+
+td {
+    text-align: center;
+    border: 1px solid grey;
+}
+th {
+    align: center;
+    border: 1px solid grey;
+}

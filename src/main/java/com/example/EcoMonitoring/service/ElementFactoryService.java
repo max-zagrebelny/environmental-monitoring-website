@@ -7,4 +7,5 @@ import java.util.List;
 public interface ElementFactoryService {
     List<ElementFactory> findAll();
     ElementFactory findByNameElement(String nameElement);
+    ElementFactory findByCode(int code);
 }
