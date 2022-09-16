@@ -49,8 +49,11 @@ public class CityController {
 
 
         try {
+
             city = cityService.findByName(cityName);
+
         } catch (NullPointerException e) {
+
            model.addAttribute("city", cityName);
            return "error";
         }

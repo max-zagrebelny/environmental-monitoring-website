@@ -10,17 +10,19 @@
 </head>
 <body>
 
+<caption>
+    <h2><div th:object="${city}"  th:text="${city.name}"></div></h2>
+</caption>
+
 <table class="table">
-    <caption>
-        <h2><div th:object="${city}"  th:text="${city.name}"></div></h2>
-    </caption>
     <tr>
         <th>Об'єкт</th>
         <th>Речовина</th>
-        <th>Об'єм викидів</th>
-        <th>Величина масової витрати г/год.</th>
-        <th>Гранично допустимі викиди мг/м3. </th>
-        <th>Перевищення</th>
+        <th>Об'єм викидів мг/м3</th>
+        <th>Середньо добові ГДК</th>
+        <th>Гранично допустимі викиди мг/м3</th>
+        <th>Клас небезпеки</th>
+        <th>Дотримання норм</th>
         <th>Заходи, спрямовані на зменшення об'єму викидів шкідливих речовин</th>
     </tr>
     <div  th:each="ft : ${city.getFactories()}" >
@@ -30,9 +32,10 @@
             <td th:text="${el.getValue()}">smth</td>
             <td th:text="${el.getAverageDaily()}">smth</td>
             <td th:text="${el.getMaxOnce()}">smth</td>
+            <td th:text="${el.getHazardClass()}">smth</td>
             <td th:switch="${el.isExcess()}">
-                <img th:case="true"  src="../image/table/red-circle.png"   alt="перевищення">
-                <img th:case="false"  src="../image/table/green-circle.png"   alt="норма">
+                <img th:case="true"  src="../image/table/003--2.png"   alt="перевищення">
+                <img th:case="false"  src="../image/table/002--1.png"   alt="норма">
             </td>
             <td th:text="${el.getMessage()}">smth</td>
         </tr>
