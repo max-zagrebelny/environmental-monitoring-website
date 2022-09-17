@@ -23,7 +23,7 @@
         <th>Гранично допустимі викиди мг/м3</th>
         <th>Клас небезпеки</th>
         <th>Дотримання норм</th>
-        <th>Заходи, спрямовані на зменшення об'єму викидів шкідливих речовин</th>
+        <!--<th>Заходи, спрямовані на зменшення об'єму викидів шкідливих речовин</th>-->
     </tr>
     <div  th:each="ft : ${city.getFactories()}" >
         <tr class="table-info" th:each="el : ${ft.getElements()}">
@@ -37,7 +37,7 @@
                 <img th:case="true"  src="../image/table/003--2.png"   alt="перевищення">
                 <img th:case="false"  src="../image/table/002--1.png"   alt="норма">
             </td>
-            <td th:text="${el.getMessage()}">smth</td>
+            <!--<td th:text="${el.getMessage()}">smth</td>-->
         </tr>
     </div>
 

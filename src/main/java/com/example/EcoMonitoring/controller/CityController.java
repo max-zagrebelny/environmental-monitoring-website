@@ -60,7 +60,6 @@ public class CityController {
         cityService.delete(city);
         cityService.save(city);
         model.addAttribute("city", city);
-
         return "home";
     }
 }

@@ -1,6 +1,5 @@
 
 .table {
-    display: block;
     border: 1px solid grey;
 }
 
@@ -11,3 +10,5 @@ td {
 th {
     align: center;
     border: 1px solid grey;
+
+   }
