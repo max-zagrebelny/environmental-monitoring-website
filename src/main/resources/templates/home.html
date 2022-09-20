@@ -1,46 +1,234 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
+<html  xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Екологічний моніторинг</title>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css"
-          href="../static/main.css" th:href="@{main.css}" />
+
+
+    <link rel="stylesheet" type="text/css" href="../static/table.css" th:href="@{table.css}">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800;900&family=Kaushan+Script&family=Comfortaa:wght@600&display=swap">
+
+    <link rel="shortcut icon" href="img/иконка.png" type="image/png">
+    <title>Екологічний моніторинг</title>
+
 </head>
 <body>
+<header>
+    <div class="video-bg">
+        <video src="img/bgv.mp4" type="video/mp4" autoplay muted loop></video>
+        <div class="effects"></div>
+        <div class="content">
+            <div class="wrapper">
+                <div class="info">
+                    <div class="icon">
+                        <img src="img/icon.svg" alt="icon">
+                        <h1>EcoNist</h1>
+                    </div>
+                    <ul class="navigation">
+                        <li><a href="#about">About us</a></li>
+                        <li><a href="">Projects</a></li>
+                        <li><a href="">Pricing</a></li>
+                        <li><a href="">Contacts</a></li>
+                    </ul>
+                </div>
+                <div class="net">
+                    <ul>
+                        <li><a href="" class="bx bxl-facebook"></a></li>
+                        <li><a href="" class="bx bxl-instagram"></a></li>
+                        <li><a href="" class="bx bxl-linkedin"></a></li>
+                        <li><a href="https://github.com/max-zagrebelny/environmental-monitoring-website"
+                               class="bx bxl-github"></a></li>
+                    </ul>
+                    <div class="phrase">
+                        <blockquote>
+                            <p>In nature there are neither rewards nor punishments.</p>
+                            <p>there are consequences.</p>
+                            <cite>— Robert Green Ingersoll</cite>
+                        </blockquote>
+                    </div>
+                </div>
+                <div class="elem">
+                    <div class="shaking-elem">
+                        <svg version="1.0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512.000000 512.000000"
+                             preserveAspectRatio="xMidYMid meet">
 
-<caption>
-    <h2><div th:object="${city}"  th:text="${city.name}"></div></h2>
-</caption>
-
-<table class="table">
-    <tr>
-        <th>Об'єкт</th>
-        <th>Речовина</th>
-        <th>Об'єм викидів мг/м3</th>
-        <th>Середньо добові ГДК</th>
-        <th>Гранично допустимі викиди мг/м3</th>
-        <th>Клас небезпеки</th>
-        <th>Дотримання норм</th>
-        <!--<th>Заходи, спрямовані на зменшення об'єму викидів шкідливих речовин</th>-->
-    </tr>
-    <div  th:each="ft : ${city.getFactories()}" >
-        <tr class="table-info" th:each="el : ${ft.getElements()}">
-            <td th:text="${ft.getName()}">smth</td>
-            <td th:text="${el.getNameElement()}">smth</td>
-            <td th:text="${el.getValue()}">smth</td>
-            <td th:text="${el.getAverageDaily()}">smth</td>
-            <td th:text="${el.getMaxOnce()}">smth</td>
-            <td th:text="${el.getHazardClass()}">smth</td>
-            <td th:switch="${el.isExcess()}">
-                <img th:case="true"  src="../image/table/003--2.png"   alt="перевищення">
-                <img th:case="false"  src="../image/table/002--1.png"   alt="норма">
-            </td>
-            <!--<td th:text="${el.getMessage()}">smth</td>-->
-        </tr>
+                            <g transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)" fill="#fff"
+                               stroke="none">
+                                <path d="M2370 5113 c-25 -1 -97 -10 -160 -19 -747 -102 -1410 -532 -1824
+                        -1184 -63 -99 -186 -351 -230 -471 -88 -241 -142 -520 -152 -789 -23 -601 166
+                        -1180 544 -1670 84 -109 323 -348 432 -432 490 -378 1070 -567 1670 -544 671
+                        25 1277 295 1745 777 769 792 944 1976 436 2954 -127 245 -259 425 -465 631
+                        -78 77 -179 170 -226 206 -514 396 -1136 587 -1770 541z m-790 -1934 c34 -15
+                        160 -135 513 -487 l467 -467 468 467 c491 491 511 508 597 508 42 0 116 -29
+                        149 -58 30 -26 66 -113 66 -157 -1 -87 -13 -102 -578 -668 -295 -296 -557
+                        -553 -582 -570 -41 -29 -52 -32 -120 -32 -68 0 -79 3 -120 32 -25 17 -287 274
+                        -582 570 -565 566 -578 581 -578 668 0 42 29 116 58 149 26 30 113 66 157 66
+                        22 0 60 -10 85 -21z" />
+                            </g>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+    <div class="sea waves">
+        <div class="wave" id="wave1"></div>
+        <div class="wave" id="wave2"></div>
+        <div class="wave" id="wave3"></div>
+        <div class="wave" id="wave4"></div>
+    </div>
+</header>
+<main>
+    <div class="wrapper">
+        <h2 id="about">Про нас</h2>
+        <div class="notes1">
+            <img id="img1" src="img/img1.png">
+            <div class="about">
+                <p>Кожного дня ми стоїмо на варті захисту природи.
+                    Ми не можемо дивитися як люди нищать наше оточуюче середовище, тому ми робимо усе щоб зберегти
+                    його. Наша компанія займається екологічним моніторингом.
+                    Екологічний моніторинг - процес спостереження за станом навколишнього середовища,яке включає
+                    спостереження і збір даних збір за рівнем і станом вод,
+                    речовин у повітрі, станом грунтів. Екологічне спостереження дозволяє виявити зміни, що
+                    відбуваються під час природних процесів, і зміни, які відбуваються під безпосереднім людським
+                    впливом.
+                </p>
+            </div>
+        </div>
+        <div class="notes2">
+            <img id="img2" src="img/img2.png">
+            <div class="about2">
+                <p>Під час екологічного спостереження ми слідкуємо за станом довкілля, формуємо інформаційні дані
+                    про поточний стан довкілля та ступінь його забрудненості,
+                    здійснюємо широкомасштабні спостереження за факторами антропогенної дії, складаємо прогноз
+                    тенденцій змін стану природного довкілля,
+                    визначаємо джерела впливу антропогенного характеру та організовуємо спостереження за ними.
+                    За допомогою цих всіх видів діяльності ми можемо запобігти створення природних катастроф та
+                    техногенних аварій.
+                </p>
+            </div>
+        </div>
+        <div class="notes1">
+            <img id="img3" src="img/img3.png">
+            <div class="about3">
+                <p>Наша компанія надає широкий спектр послуг, таких як: оцінка впливів на навколишнє середовище
+                    (ОВНС), енергозбереження та енергоефективність,
+                    розробка енергетичного сертифікату будівель, експертиза проектної документації, тощо.
+                    Ми опрацювали сотні унікальних проектів. Наші можливості гарантують, що ви працюватимете
+                    безпосередньо з нашими досвідченими та професійними фахівцями і можете бути впевнені, що навіть
+                    найбільші ваші проекти отримають нашу персональну увагу.</p>
+            </div>
+        </div>
+        <h2>Переваги роботи з нами</h2>
+        <div class="advantages">
+            <div class="adv1">
+                <div class="container">
+                    <img class="note_numbers" src="img/one.png" alt="1">
+                    <div class="txt">
+                        <h3>Оперативнiсть</h3>
+                        <p>Оперативне внесення правок за бажанням клієнта</p>
+                    </div>
+                </div>
+            </div>
+            <div class="adv2">
+                <img class="note_numbers" src="img/two.png" alt="2">
+                <div class="txt">
+                    <h3>Якiсть</h3>
+                    <p>Безпрецедентна якість надання послуг</p>
+                </div>
+            </div>
+            <div class="adv3">
+                <div class="container1">
+                    <img class="note_numbers" src="img/three.png" alt="3">
+                    <div class="txt">
+                        <h3>Комунiкацiя</h3>
+                        <p>Постійний зв'язок з менеджером, що координує проект клієнта</p>
+                    </div>
+                </div>
+            </div>
+            <div class="adv4">
+                <div class="container2">
+                    <img class="note_numbers" src="img/four.png" alt="4">
+                    <div class="txt">
+                        <h3>Контроль</h3>
+                        <p>Відслідковування процесу виконання робіт</p>
+                    </div>
+                </div>
+            </div>
+            <div class="adv5">
+                <div class="container3">
+                    <img class="note_numbers" src="img/five.png" alt="5">
+                    <div class="txt">
+                        <h3>Термiни</h3>
+                        <p>Фіксований термін виконання робіт. Терміни до 30 днів</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <h2 id="project">Проект 1</h2>
 
-</table>
+            <h2><div th:object="${city}"  th:text="${city.name}"></div></h2>
+
+        <!-- Таблиця -->
+
+        <div class="table">
+
+
+            <table class="table">
+
+                <tr>
+                    <th>Об'єкт</th>
+                    <th>Речовина</th>
+                    <th>Об'єм викидів мг/м3</th>
+                    <th>Середньо добові ГДК</th>
+                    <th>Гранично допустимі викиди мг/м3</th>
+                    <th>Клас небезпеки</th>
+                    <th>Дотримання норм</th>
+                    <!--<th>Заходи, спрямовані на зменшення об'єму викидів шкідливих речовин</th>-->
+                </tr>
+                <div  th:each="ft : ${city.getFactories()}" >
+                    <tr class="table-info" th:each="el : ${ft.getElements()}">
+                        <td th:text="${ft.getName()}">smth</td>
+                        <td th:text="${el.getNameElement()}">smth</td>
+                        <td th:text="${el.getValue()}">smth</td>
+                        <td th:text="${el.getAverageDaily()}">smth</td>
+                        <td th:text="${el.getMaxOnce()}">smth</td>
+                        <td th:text="${el.getHazardClass()}">smth</td>
+                        <td th:switch="${el.isExcess()}">
+                            <img th:case="true"  src="../img/table/003--2.png"   alt="перевищення">
+                            <img th:case="false"  src="../img/table/002--1.png"   alt="норма">
+                        </td>
+                        <!--<td th:text="${el.getMessage()}">smth</td>-->
+                    </tr>
+                </div>
+
+            </table>
+        </div>
+
+    </div>
+</main>
+<footer>
+    <div class="wrapper">
+        <div class="pairs">
+            <div class="pair1">
+                <p>🕻 <a href="tel:+380 682 323 2383">+380 682 323 2383</a></p>
+                <p>Email:<a href="mailto:econistofficial@gmail.com"> econistofficial@gmail.com</a></p>
+            </div>
+            <div class="pair2">
+                <p>GitHub: <a href="https://github.com/max-zagrebelny/environmental-monitoring-website">EcoNist</a>
+                </p>
+                <p>Instagram: <a href="https://www.instagram.com/nikasday13/">@EcoNist</a></p>
+            </div>
+        </div>
+        <img src="img/plane.png">
+    </div>
+</footer>
 </body>
 </html>
