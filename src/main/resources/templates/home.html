@@ -8,10 +8,10 @@
 
     <link rel="stylesheet" type="text/css" href="../static/table.css" th:href="@{table.css}">
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css"/>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link  href="https://fonts.googleapis.com" rel="preconnect">
+    <link  href="https://fonts.googleapis.com" rel="preconnect">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800;900&family=Kaushan+Script&family=Comfortaa:wght@600&display=swap">
 
@@ -172,9 +172,8 @@
                 </div>
             </div>
         </div>
-        <h2 id="project">Проект 1</h2>
 
-            <h2><div th:object="${city}"  th:text="${city.name}"></div></h2>
+            <h2 id="project">Проект 1: Екологiчне нормування по м. <span th:object="${city}"  th:text="${city.name}"></span></h2>
 
         <!-- Таблиця -->
 
@@ -198,7 +197,7 @@
                         <td th:text="${el.getAverageDaily()}">smth</td>
                         <td th:text="${el.getMaxOnce()}">smth</td>
                         <td th:text="${el.getHazardClass()}">smth</td>
-                        <td th:switch="${el.isExcess()}">
+                        <td th:switch="${el.isExcess()}" class="center">
                             <img th:case="true"  src="../img/table/003--2.png"   alt="перевищення">
                             <img th:case="false"  src="../img/table/002--1.png"   alt="норма">
                         </td>
@@ -220,7 +219,7 @@
             <div class="pair2">
                 <p>GitHub: <a href="https://github.com/max-zagrebelny/environmental-monitoring-website">EcoNist</a>
                 </p>
-                <p>Instagram: <a href="https://www.instagram.com/nikasday13/">@EcoNist</a></p>
+                <p><a href="https://www.google.com/maps/place/ул.+Благовестная,+39,+Черкассы,+Черкасская+область,+18000/@49.4527038,32.0349234,18.25z/data=!4m5!3m4!1s0x40d14c8cf8eca9b3:0xad7a83196131a7ea!8m2!3d49.4526892!4d32.0350531">Ми знаходимося за адресою м. Черкаси вул. Благовісна 39</a></p>
             </div>
         </div>
         <img src="img/plane.png">
