@@ -1,8 +1,8 @@
 package com.example.EcoMonitoring.model;
-
-
-
 import javax.persistence.*;
+
+import java.sql.Date;
+import java.time.Year;
 import java.util.List;
 
 
@@ -10,22 +10,23 @@ import java.util.List;
 @Table(name = "city")
 public class City {
 
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name = "name_city")
     private String name;
-
+    @Column(name="city_year")
+    private Integer year;
     @OneToMany(mappedBy = "city", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Factory> factories;
 
     public City() {
     }
 
-    public City(String name) {
+    public City(String name, Integer year) {
         this.name = name;
+        this.year = year;
     }
 
     public Long getId() {
@@ -59,6 +60,14 @@ public class City {
 
     public void removeFactory(Factory factory) {
         factories.remove(factory);
+    }
+
+    public Integer getYear() {
+        return year;
+    }
+
+    public void setYear(Integer year) {
+        this.year = year;
     }
 
 }

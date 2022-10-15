@@ -338,6 +338,7 @@ h3{
 .adv5{
     background-image: url(img/note5.svg);
 }
+
 table{
     font-family: 'Comfortaa', cursive;
     color: white;
@@ -363,6 +364,15 @@ tr{
 tr:hover {
     background:rgb(37, 37, 37);
 }
+
+.tax_input {
+color: white;
+}
+.tax_form {
+color: white;
+ list-style-type: none;
+}
+
 footer{
     background-color:rgb(46, 43, 42);
     color: rgb(229, 226, 226);

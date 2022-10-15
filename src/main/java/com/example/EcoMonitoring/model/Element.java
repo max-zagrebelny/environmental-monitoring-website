@@ -3,7 +3,6 @@ package com.example.EcoMonitoring.model;
 import javax.persistence.*;
 
 
-
 @Entity
 @Table(name = "elements")
 public class Element {

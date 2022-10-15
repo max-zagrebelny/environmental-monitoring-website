@@ -16,6 +16,7 @@ public class ElementFactory {
     @Column(name = "value_element")
     private double valueElement;
 
+    private double totalEmissions;
     @Column (name = "code_element")
     private int code;
 
@@ -34,14 +35,30 @@ public class ElementFactory {
     @Column(name = "message")
     private String message;
 
+    @Column(name = "percentage")
+    private int percentage;
+
+    private int codeTax;
+    public double getValueElement() {
+        return valueElement;
+    }
+
+    public void setValueElement(double valueElement) {
+        this.valueElement = valueElement;
+    }
+
+
+
     @ManyToOne
     @JoinColumn(name = "factory_id")
     private Factory factory;
 
+
+
     public ElementFactory() {}
 
-    public ElementFactory(float value, boolean isExcess,String nameElement,
-                          float averageDaily, float maxOnce, int hazardClass, int code, String message) {
+    public ElementFactory(float value, boolean isExcess,String nameElement, float averageDaily, float maxOnce,
+                          int hazardClass, int code, String message, double totalEmissions, int codeTax) {
         this.valueElement = value;
         this.isExcess = isExcess;
         this.nameElement = nameElement;
@@ -50,8 +67,18 @@ public class ElementFactory {
         this.hazardClass = hazardClass;
         this.code = code;
         this.message = message;
+        this.totalEmissions = totalEmissions;
+        this.codeTax = codeTax;
+
     }
 
+    public void setPercentage(int percentage) {
+        this.percentage = percentage;
+    }
+
+    public int getPercentage() {
+        return percentage;
+    }
     public Factory getFactory() {
         return factory;
     }
@@ -130,5 +157,21 @@ public class ElementFactory {
 
     public void setMessage(String message) {
         this.message = message;
+    }
+
+    public double getTotalEmissions() {
+        return totalEmissions;
+    }
+
+    public void setTotalEmissions(double totalEmissions) {
+        this.totalEmissions = totalEmissions;
+    }
+
+    public int getCodeTax() {
+        return codeTax;
+    }
+
+    public void setCodeTax(int codeTax) {
+        this.codeTax = codeTax;
     }
 }

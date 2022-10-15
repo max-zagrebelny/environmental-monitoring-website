@@ -173,16 +173,31 @@
             </div>
         </div>
 
-            <h2 id="project">Проект 1: Екологiчне нормування по м. <span th:object="${city}"  th:text="${city.name}"></span></h2>
 
-        <!-- Таблиця -->
-
-        <table class="table">
+        <form class="input_city" th:action="@{/home}">
+            <div class="search-city">
+                <input  th:name="cityName" type="text"  placeholder="Місто" >
+                <input  th:name="cityYear" type="number" placeholder="Рік" >
+                <button  type="submit">Знайти</button>
+            </div>
+        </form>
+        <div id="table">
+        <h2 id="project" >Проект 1: Екологiчне нормування по м.<span id="obj-city" th:object="${city}"  th:text="${city.name}"></span> <span th:text="${city.year}"></span></h2>
+            <script th:inline="javascript">
+                let cityName = [[${city.name}]];
+                if(cityName == null) {
+                let table = document.getElementById('table');
+                table.style.display = 'none';
+                }
+                else {
+                document.location.replace(href="#table");}
+            </script>
+        <table id="table-city" class="table">
 
                 <tr>
                     <th>Об'єкт</th>
                     <th>Речовина</th>
-                    <th>Об'єм викидів мг/м3</th>
+                    <th>Об'єм викидів т/рік</th>
                     <th>Середньо добові ГДК</th>
                     <th>Гранично допустимі викиди мг/м3</th>
                     <th>Клас небезпеки</th>
@@ -191,22 +206,95 @@
                 </tr>
                 <div  th:each="ft : ${city.getFactories()}" >
                     <tr class="table-info" th:each="el : ${ft.getElements()}">
-                        <td th:text="${ft.getName()}">smth</td>
-                        <td th:text="${el.getNameElement()}">smth</td>
-                        <td th:text="${el.getValue()}">smth</td>
-                        <td th:text="${el.getAverageDaily()}">smth</td>
-                        <td th:text="${el.getMaxOnce()}">smth</td>
-                        <td th:text="${el.getHazardClass()}">smth</td>
+                        <td th:text="${ft.getName()}"></td>
+                        <td th:text="${el.getNameElement()}"></td>
+                        <td th:text="${el.getTotalEmissions()}"></td>
+                        <td th:text="${el.getValue()}"></td>
+                        <td th:text="${el.getMaxOnce()}"></td>
+                        <td th:text="${el.getHazardClass()}"></td>
                         <td th:switch="${el.isExcess()}" class="center">
-                            <img th:case="true"  src="../img/table/003--2.png"   alt="перевищення">
+                            <span th:case="true" >
+                                <img   src="../img/table/003--2.png"   alt="перевищення">
+                                <span class="center" th:text="${el. getPercentage()} + '%'"></span>
+                            </span>
                             <img th:case="false"  src="../img/table/002--1.png"   alt="норма">
+
                         </td>
-                        <!--<td th:text="${el.getMessage()}">smth</td>-->
+                        <!--<td th:text="${el.getMessage()}"></td>-->
                     </tr>
                 </div>
 
             </table>
+            <div class="tax_input" id="tax">
+                <form  class="tax_form" th:action="@{/home}">
+                    <h4>Оберіть види забруднення: </h4>
+                    <ul class="tax_form">
+                        <li>
+                            <input th:name="atmos" id="atmos" type="checkbox" />
+                            <label>За викиди в атмосферне повітря </label>
+                        </li>
+                        <li>
+                            <input th:name="aquas" type="checkbox" />
+                            <label>За скиди забруднюючих речовин у водні об'єкти </label>
+                        </li>
+                        <li>
+                            <input th:name="alloc" type="checkbox" />
+                            <label>За розміщення відходів</label>
+                        </li>
+                        <li>
+                            <input th:name="radios" type="checkbox"/>
+                            <label>За утворення радіоактивних відходів</label>
+                        </li>
+                        <li>
+                            <input th:name="radiosAlloc" type="checkbox" />
+                            <label>За тимчасове зберігання радіоактивних відходів </label>
+                        </li>
+                        <input  type="hidden" th:name="cityName"  th:value="${city.name}"/>
+                        <input  type="hidden" th:name="cityYear" th:value="${city.year}"/>
+                    </ul>
 
+                    <button type="submit" id="submit">Обчислити екологічний податок</button>
+                </form>
+                <div th:object="${taxes}"  id="table_tax" class="table_tax"> <h2>Розраховані податки:</h2>
+
+                <script th:inline="javascript" >
+                let size = [[${size}]];
+                 const tableTax = document.getElementById('table_tax');
+                if(size == 0) {
+
+                tableTax.style.display = 'none';
+                }
+                else {
+                 tableTax.style.display = 'block';
+                 document.location.replace(href="#table_tax");
+                }
+
+
+
+            </script>
+
+                    <table class="table">
+
+                        <tr>
+                            <th>Назва об'єкту</th>
+                            <th>Речовина</th>
+                            <th>Об'єм викидів т/рік</th>
+                            <th>Ставки податку грн/т</th>
+                            <th>Сума податку грн</th>
+                        </tr>
+                        <div  th:each="tx : ${taxes}" >
+                            <tr class="table-info">
+                                <td th:text="${tx.getNameFactory()}"></td>
+                                <td th:text="${tx.getNameElement()}"></td>
+                                <td th:text="${tx.getVolumeEmissions()}"></td>
+                                <td th:text="${tx.getTaxRates()}"></td>
+                                <td th:text="${tx.getTaxAmount()}"></td>
+                            </tr>
+                        </div>
+                    </table>
+                </div>
+            </div>
+        </div>
     </div>
 </main>
 <footer>
@@ -225,5 +313,6 @@
         <img src="img/plane.png">
     </div>
 </footer>
+<script type="text/javascript" th:src="@{home.js}"></script>
 </body>
 </html>

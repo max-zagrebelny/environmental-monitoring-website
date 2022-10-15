@@ -8,6 +8,7 @@ import com.example.EcoMonitoring.repository.CityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.Year;
 import java.util.List;
 import java.util.Optional;
 
@@ -61,7 +62,38 @@ public class CityServiceImp implements CityService {
 
                 if(elementFactory.getValue() > element.getMaxOnce()) {
                     elementFactory.setExcess(true);
+                    elementFactory.setPercentage((int)(((elementFactory.getValue() - element.getMaxOnce()) / element.getMaxOnce()) * 100));
                 }
+                else {
+                    elementFactory.setExcess(false);
+                }
+
+            }
+        }
+        return city;
+    }
+
+    @Override
+    public City findByNameAndYear(String name, Integer year) {
+
+        City city = cityRepository.findByNameAndYear(name, year);
+
+        for(Factory factory: city.getFactories()) {
+            for(ElementFactory elementFactory: factory.getElements()) {
+
+                Element element = elementService.findByCode(elementFactory.getCode());
+
+                elementFactory.setAverageDaily(element.getAverageDaily());
+                elementFactory.setMaxOnce(element.getMaxOnce());
+
+                if(elementFactory.getValue() > element.getMaxOnce()) {
+                    elementFactory.setExcess(true);
+                    elementFactory.setPercentage((int)(((elementFactory.getValue() - element.getMaxOnce()) / element.getMaxOnce()) * 100));
+                }
+                else {
+                    elementFactory.setExcess(false);
+                }
+
             }
         }
         return city;
