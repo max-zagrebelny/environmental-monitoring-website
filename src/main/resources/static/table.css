@@ -411,10 +411,106 @@ footer img{
     src: url('fonts/Aqum.eot');
     src: local('Aqum'),
         url('Aqum.eot?#iefix') format('embedded-opentype'),
-        url('Aqum.woff2') format('woff2'),
-        url('Aqum.woff') format('woff'),
-        url('Aqum.ttf') format('truetype');
+        url('fonts/Aqum.woff2') format('woff2'),
+        url('fonts/Aqum.woff') format('woff'),
+        url('fonts/Aqum.ttf') format('truetype');
     font-weight: bold;
     font-style: normal;
 }
+.main_info p{
+    color: white;
+    width: 700px;
+    text-align: center;
+    margin: 22px auto;
+    font-size: 15px;
+    font-family: 'Comfortaa', cursive;
+}
+.search-city{
+    display: flex;
+    color: white;
+    gap: 15px;
+}
+.search-city label{
+    text-transform: uppercase;
+    font-family: 'Aqum', cursive;
+    font-weight: bold;
+}
+.input_city{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.form_button button{
+    width: 120px;
+}
 
+ button{
+    padding: 10px 10px;
+    margin: 20px 7px;
+    border-radius: 7px;
+   
+    text-transform: uppercase;
+    color: white;
+    background-color: rgb(36, 52,52);
+    font-family: 'Aqum', cursive;
+    border-right: 1px solid white;
+    border-bottom: 1px solid white;
+    box-shadow: inset 4px 4px 5px rgba(255, 255, 255, 0.3), 
+    inset -4px -4px 5px  rgba(80, 79, 79, 0.1),
+    10px 20px 20px rgba(107, 107, 107, 0.1);
+    transition: 0.5s;
+}
+button:hover{
+    background-color: rgb(26, 34, 34);
+    box-shadow:  none;
+}
+.add_list input{
+    padding: 8px 10px;
+    margin: 10px 0;
+    border-radius: 10px;
+    font-family: 'Aqum', cursive;
+    font-weight: bold;
+    font-size: 15px;
+}
+h3{
+    margin: 12px 0;
+    text-align: center;
+}
+.tax_form{
+    font-family: 'Comfortaa', cursive;
+    width: 470px;
+    margin: auto;
+}
+.tax_button{
+    display: flex;
+    justify-content: center;
+}
+#submit{
+    width: 320px;
+}
+.tax_form input[type="checkbox"]{
+    display: none;
+}
+.tax_form li{
+    margin: 10px 0;
+}
+.tax_form label:before {
+    content: '';
+    display: inline-block;
+    width: 23px;
+    height: 23px;
+    vertical-align: middle;
+    margin-left: -10px;
+    margin-right: 10px;
+    border-radius: 50%;
+    background-color: rgb(36, 34, 34);
+    box-shadow:0 0 15px 4px rgba(0, 0, 0, 0.274);
+    border: 2px solid rgb(207, 205, 205);
+  }
+  .tax_form input[type="checkbox"]:checked + label:before {
+    content: '';
+    background-size: 70%;
+    background-image: url(img/check-mark.png) ; 
+    background-repeat: no-repeat;
+    background-position: center;
+  }
