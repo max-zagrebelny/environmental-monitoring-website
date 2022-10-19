@@ -181,25 +181,10 @@
                     Ви можете ознайомитись з усіма доспуними даними.</p>
                 <form class="input_city" th:action="@{/home}">
                     <div class="search-city">
-                        <!-- <input  th:name="cityName" type="text"  placeholder="Місто" >
-                <input  th:name="cityYear" type="number" placeholder="Рік" > -->
-                        <!-- <select th:name="cityName">
-                    <option hidden="">Місто</option>
-                    <option>Черкаси</option>
-                    <option>Київ</option>
-                    <option>Львів</option>
-                    <option>Одеса</option>
-                </select>
-                <select th:name="cityYear">
-                    <option hidden="">Рік</option>
-                    <option>2019</option>
-                    <option>2020</option>
-                    <option>2021</option>
-                </select> -->
                         <div class="city_list">
                             <label>Оберіть місто: </label>
                             <div class="add_list">
-                                <input th:name="cityName" list="multy-list">
+                                <input th:name="cityName" type="text" list="multy-list" pattern="[А-Яа-яґҐІіЇїЄє'’ʼ]{2,20}" placeholder="місто" required oninvalid="setCustomValidity('Введіть назву від 2 до 20 знаків без цифр і пробілів')" oninput="setCustomValidity('')">
                                 <datalist th:name="cityName" id="multy-list">
                                     <option>Черкаси</option>
                                     <option>Київ</option>
@@ -211,7 +196,7 @@
                         <div class="city_list">
                             <label>Оберіть рік: </label>
                             <div class="add_list">
-                                <input th:name="cityYear" list="multy-list2">
+                                <input th:name="cityYear" list="multy-list2" pattern="20[0-9]{2}" placeholder="рік" required oninvalid="setCustomValidity('Використовуйте лише цифри. Вводьте не більше 4 знаків')" oninput="setCustomValidity('')">
                                 <datalist th:name="cityYear" id="multy-list2">
                                     <option>2019</option>
                                     <option>2020</option>

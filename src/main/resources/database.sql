@@ -16,7 +16,7 @@ SELECT * FROM element_factory;
 SELECT * FROM environmental_tax;
 
 
-INSERT INTO city (id, name_city, city_year) VALUES (1,'Черкаси', 2019);
+INSERT INTO city (id, name_city, city_year) VALUES (1,'Черкаси', 2021);
 INSERT INTO factory(id, name_factory,city_id) VALUES (1, 'ПрАТ "Азот"', 1);
 INSERT INTO factory(id, name_factory,city_id) VALUES (2, 'ПрАТ "Черкаське хімволокно"', 1);
 INSERT INTO factory(id, name_factory,city_id) VALUES (3, 'ПрАТ "Миронівська птахофабрика"', 1);

@@ -9,7 +9,7 @@
           href="../static/error.css" th:href="@{error.css}" />
 </head>
 <body>
-    <div class="error-text" th:text="'Місто ' +  ${city} + ' не знайдено в базі даних...'"></div>
+    <div class="error-text" th:text="'Місто ' +  ${city} + ' ' + ${year} + '  не знайдено в базі даних...'"></div>
     <img class="error-image" src="../img/error/error.png">
 </body>    
 </html>

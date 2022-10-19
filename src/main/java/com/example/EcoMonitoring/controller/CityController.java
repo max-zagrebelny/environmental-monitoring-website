@@ -53,6 +53,7 @@ public class CityController {
             } catch (NullPointerException e) {
 
                 model.addAttribute("city", cityName);
+                model.addAttribute("year", cityYear);
                 return "error";
             }
 
