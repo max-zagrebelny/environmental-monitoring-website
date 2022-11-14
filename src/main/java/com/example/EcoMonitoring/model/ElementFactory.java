@@ -10,35 +10,18 @@ public class ElementFactory {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "is_excess")
     private boolean isExcess;
-
-    @Column(name = "value_element")
     private double valueElement;
-
     private double totalEmissions;
-    @Column (name = "code_element")
-    private int code;
-
-    @Column (name = "name_element")
     private String nameElement;
-
-    @Column (name = "average_daily")
-    private double averageDaily;
-
-    @Column (name = "max_once")
-    private double maxOnce;
-
-    @Column (name = "hazard_class")
-    private int hazardClass;
-
-    @Column(name = "message")
     private String message;
-
-    @Column(name = "percentage")
     private int percentage;
-
     private int codeTax;
+
+
+    @OneToOne
+    @JoinColumn(name = "element_id")
+    private Element element;
     public double getValueElement() {
         return valueElement;
     }
@@ -48,28 +31,41 @@ public class ElementFactory {
     }
 
 
-
     @ManyToOne
     @JoinColumn(name = "factory_id")
     private Factory factory;
 
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "nuclear_isd", referencedColumnName = "id")
+    private Nuclear nuclear;
+
+    @OneToOne
+    @JoinColumn(name = "concentration_id", referencedColumnName = "id")
+    private Concentration concentration;
 
 
-    public ElementFactory() {}
 
-    public ElementFactory(float value, boolean isExcess,String nameElement, float averageDaily, float maxOnce,
-                          int hazardClass, int code, String message, double totalEmissions, int codeTax) {
+    public ElementFactory() {
+
+    }
+
+    public ElementFactory(float value, boolean isExcess, String nameElement,
+                          String message, double totalEmissions, int codeTax, Element element) {
         this.valueElement = value;
         this.isExcess = isExcess;
         this.nameElement = nameElement;
-        this.averageDaily = averageDaily;
-        this.maxOnce = maxOnce;
-        this.hazardClass = hazardClass;
-        this.code = code;
         this.message = message;
         this.totalEmissions = totalEmissions;
         this.codeTax = codeTax;
+        this.element = element;
+    }
 
+    public Element getElement() {
+        return element;
+    }
+
+    public void setElement(Element element) {
+        this.element = element;
     }
 
     public void setPercentage(int percentage) {
@@ -92,7 +88,7 @@ public class ElementFactory {
     }
 
     public double getValue() {
-        return valueElement;
+        return this.valueElement;
     }
 
     public void setExcess(boolean excess) {
@@ -119,38 +115,6 @@ public class ElementFactory {
         this.nameElement = nameElement;
     }
 
-    public int getHazardClass() {
-        return hazardClass;
-    }
-
-    public void setHazardClass(int hazardClass) {
-        this.hazardClass = hazardClass;
-    }
-
-    public void setAverageDaily(double averageDaily) {
-        this.averageDaily = averageDaily;
-    }
-
-    public double getAverageDaily() {
-        return averageDaily;
-    }
-
-    public void setMaxOnce(double maxOnce) {
-        this.maxOnce = maxOnce;
-    }
-
-    public double getMaxOnce() {
-        return maxOnce;
-    }
-
-    public void setCode(int code) {
-        this.code = code;
-    }
-
-    public int getCode() {
-        return code;
-    }
-
     public String getMessage() {
         return message;
     }
@@ -173,5 +137,21 @@ public class ElementFactory {
 
     public void setCodeTax(int codeTax) {
         this.codeTax = codeTax;
+    }
+
+    public Nuclear getNuclear() {
+        return nuclear;
+    }
+
+    public void setNuclear(Nuclear nuclear) {
+        this.nuclear = nuclear;
+    }
+
+    public Concentration getConcentration() {
+        return concentration;
+    }
+
+    public void setConcentration(Concentration concentration) {
+        this.concentration = concentration;
     }
 }

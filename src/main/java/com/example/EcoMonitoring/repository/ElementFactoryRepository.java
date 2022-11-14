@@ -12,5 +12,5 @@ import java.util.List;
 public interface ElementFactoryRepository extends JpaRepository<ElementFactory, Long> {
 
     ElementFactory findByNameElement(String nameElement);
-    ElementFactory findByCode(int code);
+
 }

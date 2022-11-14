@@ -63,11 +63,24 @@ public class EnvironmentalTaxServiceImp implements EnvironmentalTaxService{
             for (EnvironmentalTax tempEnvElem : envElements) {
 
 
-                if (tempEnvElem.getId() == elementFactory.getCodeTax()) {
+                if (tempEnvElem.getId() == elementFactory.getCodeTax() &&  tempEnvElem.getId() != 59) {
 
                         Double taxAmount = elementFactory.getTotalEmissions() * tempEnvElem.getTaxRates();
                         Double scale = Math.pow(10, 3);
                         Double result = Math.ceil(taxAmount * scale) / scale;
+                    factoryTaxes.add(new FactoryTaxes(elementFactory.getFactory().getName(), elementFactory.getNameElement(),
+                            elementFactory.getTotalEmissions(), tempEnvElem.getTaxRates(), result));
+                }
+                else if(tempEnvElem.getId() == elementFactory.getCodeTax() && tempEnvElem.getId() == 59)
+                {
+                    Double taxAmount = elementFactory.getNuclear().getOn()
+                            * elementFactory.getNuclear().getH() + (elementFactory.getNuclear().getRns() * elementFactory.getNuclear().getC1ns()
+                            * elementFactory.getNuclear().getV1ns() + elementFactory.getNuclear().getRv() * elementFactory.getNuclear().getC1v()
+                            * elementFactory.getNuclear().getV1v()) + elementFactory.getNuclear().getRestructuring() * (elementFactory.getNuclear().getRns()
+                            * elementFactory.getNuclear().getC2ns() * elementFactory.getNuclear().getV2ns() + elementFactory.getNuclear().getRv()
+                            * elementFactory.getNuclear().getC2v() * elementFactory.getNuclear().getV2v());
+                    Double scale = Math.pow(10, 3);
+                    Double result = Math.ceil(taxAmount * scale) / scale;
                     factoryTaxes.add(new FactoryTaxes(elementFactory.getFactory().getName(), elementFactory.getNameElement(),
                             elementFactory.getTotalEmissions(), tempEnvElem.getTaxRates(), result));
                 }

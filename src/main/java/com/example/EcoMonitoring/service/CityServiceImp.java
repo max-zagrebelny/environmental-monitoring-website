@@ -55,14 +55,10 @@ public class CityServiceImp implements CityService {
         for(Factory factory: city.getFactories()) {
             for(ElementFactory elementFactory: factory.getElements()) {
 
-                Element element = elementService.findByCode(elementFactory.getCode());
 
-                elementFactory.setAverageDaily(element.getAverageDaily());
-                elementFactory.setMaxOnce(element.getMaxOnce());
-
-                if(elementFactory.getValue() > element.getMaxOnce()) {
+                if(elementFactory.getValue() > elementFactory.getElement().getMaxOnce()) {
                     elementFactory.setExcess(true);
-                    elementFactory.setPercentage((int)(((elementFactory.getValue() - element.getMaxOnce()) / element.getMaxOnce()) * 100));
+                    elementFactory.setPercentage((int)(((elementFactory.getValue() - elementFactory.getElement().getMaxOnce()) / elementFactory.getElement().getMaxOnce()) * 100));
                 }
                 else {
                     elementFactory.setExcess(false);
@@ -81,14 +77,10 @@ public class CityServiceImp implements CityService {
         for(Factory factory: city.getFactories()) {
             for(ElementFactory elementFactory: factory.getElements()) {
 
-                Element element = elementService.findByCode(elementFactory.getCode());
 
-                elementFactory.setAverageDaily(element.getAverageDaily());
-                elementFactory.setMaxOnce(element.getMaxOnce());
-
-                if(elementFactory.getValue() > element.getMaxOnce()) {
+                if(elementFactory.getValue() > elementFactory.getElement().getMaxOnce()) {
                     elementFactory.setExcess(true);
-                    elementFactory.setPercentage((int)(((elementFactory.getValue() - element.getMaxOnce()) / element.getMaxOnce()) * 100));
+                    elementFactory.setPercentage((int)(((elementFactory.getValue() - elementFactory.getElement().getMaxOnce()) / elementFactory.getElement().getMaxOnce()) * 100));
                 }
                 else {
                     elementFactory.setExcess(false);

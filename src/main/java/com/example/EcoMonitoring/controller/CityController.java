@@ -1,8 +1,12 @@
 package com.example.EcoMonitoring.controller;
 import com.example.EcoMonitoring.model.City;
 import com.example.EcoMonitoring.service.CityService;
+import com.example.EcoMonitoring.service.ConcentrationService;
 import com.example.EcoMonitoring.service.EnvironmentalTaxService;
+import com.example.EcoMonitoring.service.WaterQualityRiskService;
 import com.example.EcoMonitoring.utils.FactoryTaxes;
+import com.example.EcoMonitoring.utils.RiskAssessment;
+import com.example.EcoMonitoring.utils.RiskAssessmentWater;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,9 +25,17 @@ public class CityController {
     @Autowired
     private final EnvironmentalTaxService environmentalTaxService;
 
-    public CityController(CityService cityService, EnvironmentalTaxService environmentalTaxService) {
+    @Autowired
+    private final ConcentrationService concentrationService;
+
+    @Autowired
+    private WaterQualityRiskService waterQualityRiskService;
+
+    public CityController(CityService cityService, EnvironmentalTaxService environmentalTaxService, ConcentrationService concentrationService) {
         this.cityService = cityService;
         this.environmentalTaxService = environmentalTaxService;
+        this.concentrationService = concentrationService;
+
     }
 
 
@@ -38,6 +50,9 @@ public class CityController {
                        @RequestParam(value = "radiosAlloc", required = false) boolean radiosAlloc){
         City city = new City();
         List<FactoryTaxes> factoryTaxes = new ArrayList<>();
+        List<RiskAssessment> riskAssessments = new ArrayList<>();
+        List<RiskAssessmentWater> riskAssessmentsWater = new ArrayList<>();
+
         if(cityName != null && cityYear != null) {
 
             try {
@@ -45,43 +60,28 @@ public class CityController {
                 city = cityService.findByNameAndYear(cityName, cityYear);
 
                 if(atmos || aquas || alloc || radios || radiosAlloc) {
-
                     factoryTaxes = environmentalTaxService.calculateTax(city, atmos, aquas, alloc, radios, radiosAlloc);
-
                 }
+
+                riskAssessments = concentrationService.calculateRisk(city);
+                riskAssessmentsWater = waterQualityRiskService.calculateRisk(city);
+
 
             } catch (NullPointerException e) {
 
                 model.addAttribute("city", cityName);
                 model.addAttribute("year", cityYear);
-                return "error";
-            }
-
-
-        }
-        else if (cityName != null && cityYear == null) {
-            try {
-
-                city = cityService.findByName(cityName);
-
-                if(atmos || aquas || alloc || radios || radiosAlloc) {
-
-                    factoryTaxes = environmentalTaxService.calculateTax(city, atmos, aquas, alloc, radios, radiosAlloc);
-
-                }
-            } catch (NullPointerException e) {
-
-                model.addAttribute("city", cityName);
 
                 return "error";
             }
         }
-
-
 
         model.addAttribute("city", city);
         model.addAttribute("taxes", factoryTaxes);
         model.addAttribute("size", factoryTaxes.size());
+        model.addAttribute("risk" , riskAssessments);
+        model.addAttribute("riskWater" , riskAssessmentsWater);
+
 
         return "home";
     }

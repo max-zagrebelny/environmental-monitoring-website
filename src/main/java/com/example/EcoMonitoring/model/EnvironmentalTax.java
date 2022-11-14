@@ -21,6 +21,8 @@ public class EnvironmentalTax {
 
     private String allocation;
 
+
+
     public EnvironmentalTax() {}
 
     public EnvironmentalTax(Long id, String type, String nameElement, Double taxRates, Double concentration, Integer hazardClass, String allocation ) {
@@ -31,6 +33,7 @@ public class EnvironmentalTax {
         this.concentration = concentration;
         this.hazardClass = hazardClass;
         this.allocation = allocation;
+
     }
 
     public Long getId() {

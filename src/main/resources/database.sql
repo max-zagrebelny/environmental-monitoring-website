@@ -6,7 +6,7 @@ DELETE FROM element_factory;
 DELETE FROM factory;
 DELETE FROM city;
 DELETE FROM environmental_tax;
-
+DELETE FROM concentration;
 
 
 SELECT * FROM elements;
@@ -14,7 +14,7 @@ SELECT * FROM city;
 SELECT * FROM factory;
 SELECT * FROM element_factory;
 SELECT * FROM environmental_tax;
-
+SELECT * FROM concentration;
 
 INSERT INTO city (id, name_city, city_year) VALUES (1,'Черкаси', 2021);
 INSERT INTO factory(id, name_factory,city_id) VALUES (1, 'ПрАТ "Азот"', 1);
@@ -22,42 +22,42 @@ INSERT INTO factory(id, name_factory,city_id) VALUES (2, 'ПрАТ "Черкас
 INSERT INTO factory(id, name_factory,city_id) VALUES (3, 'ПрАТ "Миронівська птахофабрика"', 1);
 
 
-INSERT INTO element_factory(id, average_daily, code_element, hazard_class, is_excess, max_once, name_element, value_element, factory_id, message, percentage, total_emissions, code_tax)
-VALUES (1, -1, 337, 4, false, -1, 'Вуглецю оксид', 4, 1,'Зменшення обсягів виробництва', 0, 282.278, 9);
+INSERT INTO element_factory(id, is_excess, name_element, value_element, factory_id, message, percentage, total_emissions, code_tax, element_id, concentration_id)
+VALUES (1, false, 'Вуглецю оксид', 4, 1,'Зменшення обсягів виробництва', 0, 282.278, 9, 337, 630080);
 
-INSERT INTO element_factory(id, average_daily, code_element, hazard_class, is_excess, max_once, name_element, value_element, factory_id, message, percentage, total_emissions, code_tax)
-VALUES (2, -1, 301, 3, false, -1, 'Азоту діоксид', 0.3, 1, 'Зменшення обсягів виробництва', 0, 1025.964, 1);
+INSERT INTO element_factory(id, is_excess, name_element, value_element, factory_id, message, percentage, total_emissions, code_tax, element_id, concentration_id)
+VALUES (2, false, 'Азоту діоксид', 0.3, 1, 'Зменшення обсягів виробництва', 0, 1025.964, 1, 301, 102440);
 
-INSERT INTO element_factory(id, average_daily, code_element, hazard_class, is_excess, max_once, name_element, value_element, factory_id, message, percentage, total_emissions, code_tax)
-VALUES (3, -1, 303, 4, false, -1, 'Аміак', 0.1, 1, 'Зменшення обсягів виробництва', 0, 885.287 , 2);
+INSERT INTO element_factory(id, is_excess,  name_element, value_element, factory_id, message, percentage, total_emissions, code_tax, element_id, concentration_id)
+VALUES (3, false, 'Аміак', 0.1, 1, 'Зменшення обсягів виробництва', 0, 885.287 , 2, 303, 7664417);
 
-INSERT INTO element_factory(id, average_daily, code_element, hazard_class, is_excess, max_once, name_element, value_element, factory_id, message, percentage, total_emissions, code_tax)
-VALUES (4, -1, 351, 3, false, -1, 'Амонію сульфат', 0.12, 1, 'Зменшення обсягів виробництва', 0, 15.287 , 41);
+INSERT INTO element_factory(id, is_excess, name_element, value_element, factory_id, message, percentage, total_emissions, code_tax, element_id)
+VALUES (4, false, 'Амонію сульфат', 0.12, 1, 'Зменшення обсягів виробництва', 0, 15.287 , 41, 351);
 
 
-INSERT INTO element_factory(id, average_daily, code_element, hazard_class, is_excess, max_once, name_element, value_element, factory_id, message, percentage, total_emissions, code_tax)
-VALUES (5, -1, 1836, 4, false, -1, 'Діетиланілін',  0.005, 2,'Використання вугілля з меншим вмістом сірки', 0, 43.568, 26);
+INSERT INTO element_factory(id, is_excess, name_element, value_element, factory_id, message, percentage, total_emissions, code_tax, element_id, concentration_id)
+VALUES (5, false, 'Діетиланілін',  0.005, 2,'Використання вугілля з меншим вмістом сірки', 0, 43.568, 26, 1836, 121697);
 
-INSERT INTO element_factory(id, average_daily, code_element, hazard_class, is_excess, max_once, name_element, value_element, factory_id, message, percentage, total_emissions, code_tax)
-VALUES (6, -1, 301, 3, false, -1, 'Азоту діоксид', 0.1, 2, 'Зменшення обсягів виробництва', 0, 790.465, 1);
+INSERT INTO element_factory(id, is_excess, name_element, value_element, factory_id, message, percentage, total_emissions, code_tax, element_id, concentration_id)
+VALUES (6, false, 'Азоту діоксид', 0.1, 2, 'Зменшення обсягів виробництва', 0, 790.465, 1, 301, 102440);
 
-INSERT INTO element_factory(id, average_daily, code_element, hazard_class, is_excess, max_once, name_element, value_element, factory_id, message, percentage, total_emissions, code_tax)
-VALUES (7, -1, 1401, 4, false, -1, 'Ацетон', 0.4, 2, 'Встановлення додаткового очисного обладнання', 0, 3644.966, 4);
+INSERT INTO element_factory(id,  is_excess, name_element, value_element, factory_id, message, percentage, total_emissions, code_tax, element_id, concentration_id)
+VALUES (7, false, 'Ацетон', 0.4, 2, 'Встановлення додаткового очисного обладнання', 0, 3644.966, 4, 1401, 67641);
 
-INSERT INTO element_factory(id, average_daily, code_element, hazard_class, is_excess, max_once, name_element, value_element, factory_id, message, percentage, total_emissions, code_tax)
-VALUES (8, -1, 602, 2, false, -1, 'Бензол', 1.2, 2, 'Встановлення додаткового очисного обладнання', 0, 1792.437, 10);
+INSERT INTO element_factory(id, is_excess, name_element, value_element, factory_id, message, percentage, total_emissions, code_tax, element_id, concentration_id)
+VALUES (8, false, 'Бензол', 1.2, 2, 'Встановлення додаткового очисного обладнання', 0, 1792.437, 10, 602, 71432);
 
-INSERT INTO element_factory(id, average_daily, code_element, hazard_class, is_excess, max_once, name_element, value_element, factory_id, message, percentage, total_emissions, code_tax)
-VALUES (9, -1, 337, 4, false, -1, 'Вуглецю оксид', 4, 3,'Обробка посліду для використання в якості палива', 0, 19.172, 9);
+INSERT INTO element_factory(id, is_excess, name_element, value_element, factory_id, message, percentage, total_emissions, code_tax, element_id, concentration_id)
+VALUES (9, false, 'Вуглецю оксид', 4, 3,'Обробка посліду для використання в якості палива', 0, 19.172, 9, 337, 630080);
 
-INSERT INTO element_factory(id, average_daily, code_element, hazard_class, is_excess, max_once, name_element, value_element, factory_id, message, percentage, total_emissions, code_tax)
-VALUES (10, -1, 301, 3, false, -1, 'Азоту діоксид', 0.26, 3, 'Зменшення обсягів виробництва', 0, 73.255, 1);
+INSERT INTO element_factory(id, is_excess, name_element, value_element, factory_id, message, percentage, total_emissions, code_tax, element_id, concentration_id)
+VALUES (10, false, 'Азоту діоксид', 0.26, 3, 'Зменшення обсягів виробництва', 0, 73.255, 1, 301, 102440);
 
-INSERT INTO element_factory(id, average_daily, code_element, hazard_class, is_excess, max_once, name_element, value_element, factory_id, message, percentage, total_emissions, code_tax)
-VALUES (11, -1, 10280, 2, false, -1, 'Дитолілметан', 0.02, 3,'Обробка посліду для використання в якості палива', 0, 5.001, 51);
+INSERT INTO element_factory(id, is_excess, name_element, value_element, factory_id, message, percentage, total_emissions, code_tax, element_id)
+VALUES (11, false, 'Дитолілметан', 0.02, 3,'Обробка посліду для використання в якості палива', 0, 5.001, 51, 10280);
 
-INSERT INTO element_factory(id, average_daily, code_element, hazard_class, is_excess, max_once, name_element, value_element, factory_id, message, percentage, total_emissions, code_tax)
-VALUES (12, -1, 1401, 4, false, -1, 'Ацетон', 0.2, 3, 'Встановлення додаткового очисного обладнання', 0, 10.344, 4);
+INSERT INTO element_factory(id, is_excess, name_element, value_element, factory_id, message, percentage, total_emissions, code_tax, element_id, concentration_id)
+VALUES (12, false, 'Ацетон', 0.2, 3, 'Встановлення додаткового очисного обладнання', 0, 10.344, 4, 1401, 67641);
 
 INSERT INTO environmental_tax(id, type_elements, name_element, tax_rates)
 VALUES(1, 'Викиди в атмосферне повітря', 'Азоту оксиди',  2574.43 );
@@ -243,19 +243,35 @@ VALUES(57, 'Розміщення відходів', 'Розміщення в м�
 INSERT INTO environmental_tax(id, type_elements, name_element, hazard_class, tax_rates)
 VALUES(58, 'Розміщення відходів', 'Розміщення на відстані від 3 км і більше від меж населеного пункту', 5, 0.54);
 
+INSERT INTO environmental_tax(id, type_elements, name_element, tax_rates)
+VALUES(59, 'Утворення радіоактивних відходів', 'Радіоактивні', 50 );
 
 
 INSERT INTO environmental_tax(id, type_elements, name_element, tax_rates)
-VALUES(59, 'Утворення радіоактивних відходів', 'Високоактивні', 50 );
+VALUES(60, 'Тимчасове зберігання радіоактивних відходів', 'Високоактивні', 21084.66 );
 
 INSERT INTO environmental_tax(id, type_elements, name_element, tax_rates)
-VALUES(60, 'Утворення радіоактивних відходів', 'Середньоактивні та низькоактивні', 2 );
+VALUES(61, 'Тимчасове зберігання радіоактивних відходів', 'Середньоактивні та низькоактивні', 4216.92);
 
 
 
 
-INSERT INTO environmental_tax(id, type_elements, name_element, tax_rates)
-VALUES(61, 'Тимчасове зберігання радіоактивних відходів', 'Високоактивні', 21084.66 );
 
-INSERT INTO environmental_tax(id, type_elements, name_element, tax_rates)
-VALUES(62, 'Тимчасове зберігання радіоактивних відходів', 'Середньоактивні та низькоактивні', 4216.92);
+
+INSERT INTO concentration(id, critical_organs, rfc, type_risk, is_carcinogen)
+VALUES(102440, 'Органи дихання', 0.04, 'Інгаляційний вплив', '-');
+
+INSERT INTO concentration(id, critical_organs, rfc, type_risk, is_carcinogen)
+VALUES(630080, 'ЦНС, серц.-суд.,кров', 0.0, 'Інгаляційний вплив', '-');
+
+INSERT INTO concentration(id, critical_organs, rfc, type_risk, is_carcinogen)
+VALUES(7664417, 'Органи дихання', 0.1, 'Інгаляційний вплив', '-');
+
+INSERT INTO concentration(id, critical_organs, rfc, type_risk, is_carcinogen)
+VALUES(67641, 'Печінка, нирки, ЦНС', 30, 'Інгаляційний вплив', '-');
+
+INSERT INTO concentration(id, critical_organs, rfc, sf, type_risk, is_carcinogen)
+VALUES(71432, 'Розвиток, кров, ЦНС', 0.06, 0.027, 'Інгаляційний вплив', '+');
+
+INSERT INTO concentration(id, critical_organs, rfc, type_risk, is_carcinogen)
+VALUES(121697, 'Розвиток, кров, ЦНС', 0.0055, 'Інгаляційний вплив', '-');

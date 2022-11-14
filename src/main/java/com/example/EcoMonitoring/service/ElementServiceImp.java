@@ -5,6 +5,7 @@ import com.example.EcoMonitoring.repository.ElementRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ElementServiceImp implements ElementService{
@@ -26,9 +27,8 @@ public class ElementServiceImp implements ElementService{
         return elementRepository.findByNameElement(nameElement);
     }
 
-    @Override
-    public Element findByCode(int code) {
-        return elementRepository.findByCode(code);
+    public Optional<Element> findByCode(Long id) {
+        return elementRepository.findById(id);
     }
 
     @Override

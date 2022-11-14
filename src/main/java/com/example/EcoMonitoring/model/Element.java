@@ -1,20 +1,17 @@
 package com.example.EcoMonitoring.model;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 
 @Entity
 @Table(name = "elements")
 public class Element {
 
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
-    @Column (name = "code_element")
-    private int code;
-
+    private Long code;
     @Column (name = "name_element")
     private String nameElement;
 
@@ -27,26 +24,22 @@ public class Element {
     @Column (name = "hazard_class")
     private int hazardClass;
 
-
+    @OneToMany(mappedBy = "element", cascade = CascadeType.ALL)
+    private List<ElementFactory> elementFactory;
 
     public Element() {
     }
 
-    public Element(String nameElement, double averageDaily, double maxOnce, int hazardClass, int code) {
+    public Element(String nameElement, double averageDaily, double maxOnce, int hazardClass, Long code, ElementFactory elementFactory) {
         this.nameElement = nameElement;
         this.averageDaily = averageDaily;
         this.maxOnce = maxOnce;
         this.hazardClass = hazardClass;
         this.code = code;
+        this.elementFactory = new ArrayList<>();
     }
 
-    public Long getId() {
-        return id;
-    }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getNameElement() {
         return nameElement;
@@ -81,19 +74,26 @@ public class Element {
         return maxOnce;
     }
 
-    public void setCode(int code) {
+    public void setId(Long code) {
         this.code = code;
     }
 
-    public int getCode() {
+    public Long getId() {
         return code;
+    }
+
+    public List<ElementFactory> getElementFactory() {
+        return elementFactory;
+    }
+
+    public void setElementFactory(List<ElementFactory> elementFactory) {
+        this.elementFactory = elementFactory;
     }
 
     @Override
     public String toString() {
         return "Element{" +
-                "id=" + id +
-                ", code=" + code +
+                ", id =" + code +
                 ", nameElement='" + nameElement + '\'' +
                 ", averageDaily=" + averageDaily +
                 ", maxOnce=" + maxOnce +

@@ -8,7 +8,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface ElementRepository extends JpaRepository<Element, Integer> {
+public interface ElementRepository extends JpaRepository<Element, Long> {
     Element findByNameElement(String nameElement);
-    Element findByCode(int code);
+
 }

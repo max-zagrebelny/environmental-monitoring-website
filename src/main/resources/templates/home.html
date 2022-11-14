@@ -241,8 +241,8 @@
                                 <td th:text="${el.getNameElement()}"></td>
                                 <td th:text="${el.getTotalEmissions()}"></td>
                                 <td th:text="${el.getValue()}"></td>
-                                <td th:text="${el.getMaxOnce()}"></td>
-                                <td th:text="${el.getHazardClass()}"></td>
+                                <td th:text="${el.getElement().getMaxOnce()}"></td>
+                                <td th:text="${el.getElement().getHazardClass()}"></td>
                                 <td th:switch="${el.isExcess()}" class="center">
                                     <span th:case="true">
                                         <img src="../img/table/003--2.png" alt="перевищення">
@@ -328,6 +328,76 @@
                                     </tr>
                                 </div>
                             </table>
+                        </div>
+                    </div>
+                    <div class="risk">
+                        <h2>Проект 3: Оцiнка ризику для здоров'я населення</h2>
+                        <h2>вiд забруднення атмосферного повiтря</h2>
+
+                        <div id="risk-table" class="risk-table">
+                            <table class="table">
+
+                                <tr>
+                                    <th>Назва об'єкту</th>
+                                    <th>Речовина</th>
+                                    <th>ADD/LADD</th>
+                                    <th>CR</th>
+                                    <th>PCR</th>
+                                    <th>HR</th>
+                                    <th>Рівень ризику</th>
+                                    <th>Критичні органи</th>
+                                </tr>
+                                <div th:each="el : ${risk}">
+                                    <tr class="table-info">
+                                        <td th:text="${el.getFactory()}"></td>
+                                        <td th:text="${el.getName()}"></td>
+                                        <td class="center" th:text="${el.getAddLadd() == -1.0 ? '-' :el.getAddLadd()}"></td>
+                                        <td class="center" th:text="${el.getCr() == -1.0 ? '-' : el.getCr()}"></td>
+                                        <td class="center" th:text="${el.getPcr() == -1.0 ? '-' : el.getPcr()}"></td>
+                                        <td class="center" th:text="${el. getHq() == -1.0 ? '-' : el.getHq()}"></td>
+                                        <td th:text="${el.getRiskLevel()}"></td>
+                                        <td th:text="${el.getCriticalOrgans()}"></td>
+                                    </tr>
+                                </div>
+                            </table>
+                        </div>
+                        <div class="tax_button">
+                            <button id="risk_button" class="risk_button">Оцінка ризику</button>
+                        </div>
+                    </div>
+
+
+                    <div class="risk">
+                        <h2>Проект 4: Оцiнка потенцiйного ризику здоров’ю населення</h2>
+                        <h2>в залежностi вiд якостi води</h2>
+
+                        <div id="risk-water-table" class="risk-table">
+                            <table class="table">
+
+                                <tr>
+                                    <th>Назва об'єкту</th>
+                                    <th>Речовина</th>
+                                    <th>Питна вода</th>
+                                    <th>Рівень ризику</th>
+                                    <th>Поверхневі води</th>
+                                    <th>Рівень ризику</th>
+                                </tr>
+
+                                <div th:each="el : ${riskWater}">
+                                    <tr class="table-info">
+                                        <td th:text="${el.getNameFactory()}"></td>
+                                        <td th:text="${el.getNameElement()}"></td>
+                                        <td  class="center" th:text="${el.getDrinkingWater()}"></td>
+                                        <td th:text="${el.getLeveldrinkingWater()}"></td>
+                                        <td  class="center" th:text="${el.getSurfaceWater()}"></td>
+                                        <td th:text="${el.getLevelSurfaceWater()}"></td>
+
+                                    </tr>
+                                </div>
+                            </table>
+                        </div>
+                        <div class="tax_button">
+                            <button id="risk_water_button" class="risk_button">Оцінка ризику</button>
                         </div>
                     </div>
                 </div>
