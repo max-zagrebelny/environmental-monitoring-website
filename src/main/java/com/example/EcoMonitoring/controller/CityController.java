@@ -1,9 +1,7 @@
 package com.example.EcoMonitoring.controller;
 import com.example.EcoMonitoring.model.City;
-import com.example.EcoMonitoring.service.CityService;
-import com.example.EcoMonitoring.service.ConcentrationService;
-import com.example.EcoMonitoring.service.EnvironmentalTaxService;
-import com.example.EcoMonitoring.service.WaterQualityRiskService;
+import com.example.EcoMonitoring.service.*;
+import com.example.EcoMonitoring.utils.CompensationDamage;
 import com.example.EcoMonitoring.utils.FactoryTaxes;
 import com.example.EcoMonitoring.utils.RiskAssessment;
 import com.example.EcoMonitoring.utils.RiskAssessmentWater;
@@ -31,6 +29,9 @@ public class CityController {
     @Autowired
     private WaterQualityRiskService waterQualityRiskService;
 
+    @Autowired
+    private CompensationDamageService compensationDamageService;
+
     public CityController(CityService cityService, EnvironmentalTaxService environmentalTaxService, ConcentrationService concentrationService) {
         this.cityService = cityService;
         this.environmentalTaxService = environmentalTaxService;
@@ -52,6 +53,7 @@ public class CityController {
         List<FactoryTaxes> factoryTaxes = new ArrayList<>();
         List<RiskAssessment> riskAssessments = new ArrayList<>();
         List<RiskAssessmentWater> riskAssessmentsWater = new ArrayList<>();
+        List<CompensationDamage> compensationDamages = new ArrayList<>();
 
         if(cityName != null && cityYear != null) {
 
@@ -65,6 +67,7 @@ public class CityController {
 
                 riskAssessments = concentrationService.calculateRisk(city);
                 riskAssessmentsWater = waterQualityRiskService.calculateRisk(city);
+                compensationDamages = compensationDamageService.calculateDamages(city);
 
 
             } catch (NullPointerException e) {
@@ -81,6 +84,7 @@ public class CityController {
         model.addAttribute("size", factoryTaxes.size());
         model.addAttribute("risk" , riskAssessments);
         model.addAttribute("riskWater" , riskAssessmentsWater);
+        model.addAttribute("damages", compensationDamages);
 
 
         return "home";

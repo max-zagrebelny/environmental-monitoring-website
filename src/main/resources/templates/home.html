@@ -400,6 +400,34 @@
                             <button id="risk_water_button" class="risk_button">Оцінка ризику</button>
                         </div>
                     </div>
+                    <div class="risk">
+                        <h2>Проект 5: Розрахунок розмiрiв вiдшкодування
+                            збиткiв, якi заподiянi </h2>
+                        <h2> державi в результатi наднормативних викидiв забруднюючих</h2>
+                            <h2>речовин в атмосферне повiтря</h2>
+
+                        <div id="damage-table" class="risk-table">
+                            <table class="table">
+
+                                <tr>
+                                    <th>Назва об'єкту</th>
+                                    <th>Речовина</th>
+                                    <th>Компенсація грн</th>
+                                </tr>
+
+                                <div th:each="el : ${damages}">
+                                    <tr class="table-info">
+                                        <td th:text="${el.getNameFactory()}"></td>
+                                        <td th:text="${el.getNameElement()}"></td>
+                                        <td  class="center" th:text="${el.getCompensationDamage}"></td>
+                                    </tr>
+                                </div>
+                            </table>
+                        </div>
+                        <div class="tax_button">
+                            <button id="damage_button" class="risk_button">Розрахунок збитків</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
