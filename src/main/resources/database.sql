@@ -7,7 +7,8 @@ DELETE FROM factory;
 DELETE FROM city;
 DELETE FROM environmental_tax;
 DELETE FROM concentration;
-
+DELETE FROM population_loss;
+DELETE FROM animal_loss;
 
 SELECT * FROM elements;
 SELECT * FROM city;
@@ -15,11 +16,13 @@ SELECT * FROM factory;
 SELECT * FROM element_factory;
 SELECT * FROM environmental_tax;
 SELECT * FROM concentration;
+SELECT * FROM population_loss;
+SELECT * FROM animal_loss;
 
 INSERT INTO city (id, name_city, city_year) VALUES (1,'Черкаси', 2021);
-INSERT INTO factory(id, name_factory,city_id) VALUES (1, 'ПрАТ "Азот"', 1);
-INSERT INTO factory(id, name_factory,city_id) VALUES (2, 'ПрАТ "Черкаське хімволокно"', 1);
-INSERT INTO factory(id, name_factory,city_id) VALUES (3, 'ПрАТ "Миронівська птахофабрика"', 1);
+INSERT INTO factory(id, name_factory,city_id, population_id) VALUES (1, 'ПрАТ "Азот"', 1, 1);
+INSERT INTO factory(id, name_factory,city_id, population_id) VALUES (2, 'ПрАТ "Черкаське хімволокно"', 1, 2);
+INSERT INTO factory(id, name_factory,city_id, animal_id, population_id) VALUES (3, 'ПрАТ "Миронівська птахофабрика"', 1, 1, 3);
 
 
 INSERT INTO element_factory(id, is_excess, name_element, value_element, factory_id, message, percentage, total_emissions, code_tax, element_id, concentration_id)
@@ -56,7 +59,7 @@ VALUES (10, false, 'Азоту діоксид', 0.26, 3, 'Зменшення о�
 INSERT INTO element_factory(id, is_excess, name_element, value_element, factory_id, message, percentage, total_emissions, code_tax, element_id)
 VALUES (11, false, 'Дитолілметан', 0.02, 3,'Обробка посліду для використання в якості палива', 0, 5.001, 51, 10280);
 
-INSERT INTO element_factory(id, is_excess, name_element, value_element, factory_id, message, percentage, total_emissions, code_tax, element_id, concentration_id)
+INSERT INTO element_factory(id,  is_excess, name_element, value_element, factory_id, message, percentage, total_emissions, code_tax, element_id, concentration_id)
 VALUES (12, false, 'Ацетон', 0.2, 3, 'Встановлення додаткового очисного обладнання', 0, 10.344, 4, 1401, 67641);
 
 INSERT INTO environmental_tax(id, type_elements, name_element, tax_rates)
@@ -254,10 +257,6 @@ INSERT INTO environmental_tax(id, type_elements, name_element, tax_rates)
 VALUES(61, 'Тимчасове зберігання радіоактивних відходів', 'Середньоактивні та низькоактивні', 4216.92);
 
 
-
-
-
-
 INSERT INTO concentration(id, critical_organs, rfc, type_risk, is_carcinogen)
 VALUES(102440, 'Органи дихання', 0.04, 'Інгаляційний вплив', '-');
 
@@ -275,3 +274,13 @@ VALUES(71432, 'Розвиток, кров, ЦНС', 0.06, 0.027, 'Інгаляц
 
 INSERT INTO concentration(id, critical_organs, rfc, type_risk, is_carcinogen)
 VALUES(121697, 'Розвиток, кров, ЦНС', 0.0055, 'Інгаляційний вплив', '-');
+
+
+
+
+INSERT INTO population_loss(id, cch, min, mln, mtn, mzn, vd, nz)
+VALUES(1, 4.0, 10.0, 40.0, 5.0, 4.0, 15.0, 4.0),
+		(2, 2.0, 9.0, 20.0, 2.0, 2.0, 16.0, 2.0),
+        (3, 1.0, 4.0, 10.0, 1.0, 0.0, 0.0, 0.0);
+
+INSERT INTO animal_loss(id, amount_damages, total_weight) VALUE (1, 70000.0, 3.0);
