@@ -428,6 +428,50 @@
                             <button id="damage_button" class="risk_button">Розрахунок збитків</button>
                         </div>
                     </div>
+                    <div class="risk">
+                        <h2>Проект 6: Оцiнка збиткiв вiд наслiдкiв надзвичайних</h2>
+                        <h2>ситуацiй техногенного i природного характеру</h2>
+
+                        <div id="losses-table" class="risk-table">
+                            <table class="table">
+
+                                <tr>
+                                    <th>Назва об'єкту</th>
+                                    <th>Вид забруднення</th>
+                                    <th>Збиток грн.</th>
+                                </tr>
+
+                                <div th:each="el : ${losses}">
+
+                                    <tr th:if="${el.getNamePopLosses() != null}" class="table-info">
+                                        <td th:text="${el.getFactoryName()}"></td>
+                                        <td th:text="${el.getNamePopLosses()}"></td>
+                                        <td class="center" th:text="${el.getHp()}"></td>
+                                    </tr>
+
+
+                                    <tr class="table-info"  th:if="${el.getNameAtmoLosses() != null}">
+                                        <td th:text="${el.getFactoryName()}"></td>
+                                        <td th:text="${el.getNameAtmoLosses()}"></td>
+                                        <td class="center" th:text="${el.getAf()}"></td>
+                                    </tr>
+
+
+                                    <tr class="table-info"  th:if="${el.getNameAnimalLosses() != null}">
+                                        <td th:text="${el.getFactoryName()}"></td>
+                                        <td th:text="${el.getNameAnimalLosses()}"></td>
+                                        <td class="center" th:text="${el.getMtv()}"></td>
+                                    </tr>
+
+                                    <tr class="table-info">
+                                    </tr>
+                                </div>
+                            </table>
+                        </div>
+                        <div class="tax_button">
+                            <button id="losses_button" class="risk_button">Розрахунок збитків</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

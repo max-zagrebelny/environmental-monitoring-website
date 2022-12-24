@@ -1,10 +1,7 @@
 package com.example.EcoMonitoring.controller;
 import com.example.EcoMonitoring.model.City;
 import com.example.EcoMonitoring.service.*;
-import com.example.EcoMonitoring.utils.CompensationDamage;
-import com.example.EcoMonitoring.utils.FactoryTaxes;
-import com.example.EcoMonitoring.utils.RiskAssessment;
-import com.example.EcoMonitoring.utils.RiskAssessmentWater;
+import com.example.EcoMonitoring.utils.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -32,6 +29,9 @@ public class CityController {
     @Autowired
     private CompensationDamageService compensationDamageService;
 
+    @Autowired
+    private FactoryLossesService factoryLossesService;
+
     public CityController(CityService cityService, EnvironmentalTaxService environmentalTaxService, ConcentrationService concentrationService) {
         this.cityService = cityService;
         this.environmentalTaxService = environmentalTaxService;
@@ -54,6 +54,7 @@ public class CityController {
         List<RiskAssessment> riskAssessments = new ArrayList<>();
         List<RiskAssessmentWater> riskAssessmentsWater = new ArrayList<>();
         List<CompensationDamage> compensationDamages = new ArrayList<>();
+        List<FactoryLosses> factoryLosses = new ArrayList<>();
 
         if(cityName != null && cityYear != null) {
 
@@ -68,7 +69,13 @@ public class CityController {
                 riskAssessments = concentrationService.calculateRisk(city);
                 riskAssessmentsWater = waterQualityRiskService.calculateRisk(city);
                 compensationDamages = compensationDamageService.calculateDamages(city);
-
+                factoryLosses = factoryLossesService.calculatefactoryLoses(city);
+                for(FactoryLosses f : factoryLosses){
+                    System.out.println(f.getFactoryName() + "\n" +
+                            f.getNamePopLosses() + " " + f.getHp() + "\n" +
+                            f.getNameAtmoLosses()+ " " + f.getAf() + "\n" +
+                            f.getNameAnimalLosses() + " " + f.getMtv() + "\n");
+                }
 
             } catch (NullPointerException e) {
 
@@ -85,7 +92,7 @@ public class CityController {
         model.addAttribute("risk" , riskAssessments);
         model.addAttribute("riskWater" , riskAssessmentsWater);
         model.addAttribute("damages", compensationDamages);
-
+        model.addAttribute("losses", factoryLosses);
 
         return "home";
     }

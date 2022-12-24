@@ -36,7 +36,7 @@ public class ElementFactory {
     private Factory factory;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "nuclear_isd", referencedColumnName = "id")
+    @JoinColumn(name = "nuclear_id", referencedColumnName = "id")
     private Nuclear nuclear;
 
     @OneToOne

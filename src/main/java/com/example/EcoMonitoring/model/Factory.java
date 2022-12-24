@@ -22,7 +22,13 @@ public class Factory {
     @JoinColumn(name = "city_id")
     private City city;
 
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "population_id")
+    private PopulationLoss population;
 
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "animal_id")
+    private AnimalLoss animal;
     public Factory() {
 
     }
